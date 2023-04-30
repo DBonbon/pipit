@@ -18,3 +18,4 @@ coverage
 pytest-env
 wagtail-factories==4.0.0
 python-dotenv
+django-cors-headers

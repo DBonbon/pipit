@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     "wagtail_meta_preview",
     "wagtail_headless_preview",
     "rest_framework",
+    'corsheaders',
 
 # Project specific apps
     "pipit",
@@ -85,6 +86,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -297,3 +299,5 @@ SENTRY_ENVIRONMENT: Optional[str] = None
     os.environ['PATH'] = os.path.join(VENV_BASE, 'Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
     os.environ['PROJ_LIB'] = os.path.join(VENV_BASE, 'Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
 """
+
+CORS_ORIGIN_ALLOW_ALL = True

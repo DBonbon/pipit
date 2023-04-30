@@ -1,17 +1,20 @@
 """
 Write local settings here, or override base settings
 """
-from pipit.settings.base import *  # NOQA
+from .base import *  # NOQA
 from pipit.env_utils import get_env, get_env_bool  # NOQA: F401
 
 VS_CODE_REMOTE_DEBUG = get_env_bool("VS_CODE_REMOTE_DEBUG", default=False)
 DEBUG = True
 TEMPLATES[0]["OPTIONS"]["debug"] = DEBUG  # type: ignore[index]
 
+ALLOWED_HOSTS = ["*"]
+
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Email notification url
-WAGTAILADMIN_BASE_URL = "https://{{cookiecutter.domain_prod}}.test:{{cookiecutter.docker_web_port}}"
+#WAGTAILADMIN_BASE_URL = "https://{{cookiecutter.domain_prod}}.test:{{cookiecutter.docker_web_port}}"
+WAGTAILADMIN_BASE_URL = "https://leacards.site"
 
 # Allow weak local passwords
 AUTH_PASSWORD_VALIDATORS = []

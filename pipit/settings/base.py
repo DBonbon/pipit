@@ -153,14 +153,24 @@ WSGI_APPLICATION = "pipit.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        "NAME": get_env("DATABASE_NAME", required=True),
+        "USER": get_env("DATABASE_USER", required=True),
+        "PASSWORD": get_env("DATABASE_PASSWORD", required=True),
+        "HOST": get_env("DATABASE_HOST", required=True),
+        "PORT": int(get_env("DATABASE_PORT", default="5432")),
+    }
+}
+
+"""
+DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 
-
-"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

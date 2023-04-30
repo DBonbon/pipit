@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sitemaps",
-    "django.contrib.gis",
+    #"django.contrib.gis",
 
     #"home",
     #"search",
@@ -156,7 +156,19 @@ DATABASES = {
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
+
+
 """
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        "NAME": get_env("DATABASE_NAME", required=True),
+        "USER": get_env("DATABASE_USER", required=True),
+        "PASSWORD": get_env("DATABASE_PASSWORD", required=True),
+        "HOST": get_env("DATABASE_HOST", required=True),
+        "PORT": int(get_env("DATABASE_PORT", default="5432")),
+    }
+}
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
@@ -168,16 +180,6 @@ DATABASES = {
     }
 }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        "NAME": get_env("DATABASE_NAME", required=True),
-        "USER": get_env("DATABASE_USER", required=True),
-        "PASSWORD": get_env("DATABASE_PASSWORD", required=True),
-        "HOST": get_env("DATABASE_HOST", required=True),
-        "PORT": int(get_env("DATABASE_PORT", default="5432")),
-    }
-}
 """
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
@@ -290,7 +292,8 @@ SENTRY_DSN: Optional[str] = None
 SENTRY_ENVIRONMENT: Optional[str] = None
 
 #GDAL settings
-if os.name == 'nt':
+"""if os.name == 'nt':
     VENV_BASE = os.environ['VIRTUAL_ENV']
     os.environ['PATH'] = os.path.join(VENV_BASE, 'Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
     os.environ['PROJ_LIB'] = os.path.join(VENV_BASE, 'Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
+"""
